@@ -4,7 +4,8 @@ import { REGISTER_SUCCESS,
 	USER_LOADED,
 	AUTH_ERROR,
 	LOGIN_FAIL,
-	LOGIN_SUCCESS
+	LOGIN_SUCCESS,
+	LOGOUT
 } from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
@@ -64,4 +65,9 @@ export const login = ( email, password ) => async dispatch => {
 		if(errors) errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
 		dispatch({ type: LOGIN_FAIL });
 	}
+};
+
+// Logout and clear profile
+export const logout = () => dispatch => {
+	dispatch({ type: LOGOUT });
 };
