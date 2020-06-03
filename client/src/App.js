@@ -5,6 +5,7 @@ import NavBar from './components/layout/navbar';
 import Alert from './components/layout/alert';
 import Dashboard from './components/dashboard/dashboard';
 import CreateProfile from './components/profile-form/create.profile';
+import EditProfile from './components/profile-form/edit.profile';
 import Login from './components/auth/login';
 import Register from './components/auth/register';
 import PrivateRouter from './components/routing/privateroute';
@@ -48,6 +49,11 @@ const App = () => {
 								exact
 								path='/create-profile'
 								component={CreateProfile}
+							/>
+							<PrivateRouter
+								exact
+								path='/edit-profile'
+								component={EditProfile}
 							/>
 						</Switch>
 					</section>
