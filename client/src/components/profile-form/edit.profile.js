@@ -53,23 +53,23 @@ const EditProfile = ({
 					: profile.githubusername,
 			bio: loading || !profile.bio ? '' : profile.bio,
 			twitter:
-				loading || !profile.social.twitter
+				loading || !profile.social || !profile.social.twitter
 					? ''
 					: profile.social.twitter,
 			facebook:
-				loading || !profile.social.facebook
+				loading || !profile.social || !profile.social.facebook
 					? ''
 					: profile.social.facebook,
 			linkedin:
-				loading || !profile.social.linkedin
+				loading || !profile.social || !profile.social.linkedin
 					? ''
 					: profile.social.linkedin,
 			youtube:
-				loading || !profile.social.youtube
+				loading || !profile.social || !profile.social.youtube
 					? ''
 					: profile.social.youtube,
 			instagram:
-				loading || !profile.social.instagram
+				loading || !profile.social || !profile.social.instagram
 					? ''
 					: profile.social.instagram,
 		});
