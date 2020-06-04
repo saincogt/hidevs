@@ -1,26 +1,27 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS,
+import {
+	REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	USER_LOADED,
 	AUTH_ERROR,
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
 	LOGOUT,
-	CLEAR_PROFILE
+	CLEAR_PROFILE,
 } from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load User
 export const loadUser = () => async dispatch => {
-	if (localStorage.token) {
-		setAuthToken(localStorage.token);
-	}
 	try {
+		if (localStorage.token) {
+			setAuthToken(localStorage.token);
+		}
 		const res = await axios.get('/api/auth');
 		dispatch({ type: USER_LOADED, payload: res.data });
 	} catch (e) {
-		dispatch({ type: AUTH_ERROR })
+		dispatch({ type: AUTH_ERROR });
 	}
 };
 
@@ -28,8 +29,8 @@ export const loadUser = () => async dispatch => {
 export const register = ({ name, email, password }) => async dispatch => {
 	const config = {
 		headers: {
-			'Content-Type': 'application/json'
-		}
+			'Content-Type': 'application/json',
+		},
 	};
 
 	const body = JSON.stringify({ name, email, password });
@@ -41,17 +42,18 @@ export const register = ({ name, email, password }) => async dispatch => {
 		dispatch(loadUser());
 	} catch (e) {
 		const errors = e.response.data.errors;
-		if(errors) errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+		if (errors)
+			errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
 		dispatch({ type: REGISTER_FAIL });
 	}
 };
 
 // Login User
-export const login = ( email, password ) => async dispatch => {
+export const login = (email, password) => async dispatch => {
 	const config = {
 		headers: {
-			'Content-Type': 'application/json'
-		}
+			'Content-Type': 'application/json',
+		},
 	};
 
 	const body = JSON.stringify({ email, password });
@@ -63,7 +65,8 @@ export const login = ( email, password ) => async dispatch => {
 		dispatch(loadUser());
 	} catch (e) {
 		const errors = e.response.data.errors;
-		if(errors) errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+		if (errors)
+			errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
 		dispatch({ type: LOGIN_FAIL });
 	}
 };
