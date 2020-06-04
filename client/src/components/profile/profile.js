@@ -6,6 +6,7 @@ import ProfileTop from './profile.top';
 import ProfileAbout from './profile.about';
 import ProfileExperience from './profile.experience';
 import ProfileEducation from './profile.education';
+import ProfileGithub from './profile.github';
 import { Link } from 'react-router-dom';
 import { getProfileById } from '../../actions/profile';
 
@@ -29,7 +30,7 @@ const Profile = ({ getProfileById, match, profile: { profile }, auth }) => {
 								Edit Profile
 							</Link>
 						)}
-					<div class='profile-grid my-1'>
+					<div className='profile-grid my-1'>
 						<ProfileTop profile={profile} />
 						<ProfileAbout profile={profile} />
 						<div className='profile-exp bg-white p-2'>
@@ -62,6 +63,9 @@ const Profile = ({ getProfileById, match, profile: { profile }, auth }) => {
 								<h4>No education credentials</h4>
 							)}
 						</div>
+						{profile.githubusername && (
+							<ProfileGithub username={profile.githubusername} />
+						)}
 					</div>
 				</Fragment>
 			)}

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Moment from 'react-moment';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
@@ -10,12 +10,11 @@ const Education = ({ education, deleteEducation }) => {
 			<td>{edu.school}</td>
 			<td className='hide-sm'>{edu.degree}</td>
 			<td className='hide-sm'>
-				<Moment format='YYYY/MM/DD'>{edu.from}</Moment> -{' '}
-				{edu.to === null ? (
-					' Now'
-				) : (
-					<Moment format='YYYY/MM/DD'>{edu.to}</Moment>
-				)}
+				{`${moment(new Date(edu.from)).format('YYYY/MM/DD')} - ${
+					!edu.to
+						? 'Now'
+						: moment(new Date(edu.to)).format('YYYY/MM/DD')
+				}`}
 			</td>
 			<td>
 				<button
