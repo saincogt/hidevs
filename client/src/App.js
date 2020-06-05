@@ -10,6 +10,7 @@ import AddExperience from './components/profile-form/add.experience';
 import AddEducation from './components/profile-form/add.education';
 import Profiles from './components/profiles/profiles';
 import Profile from './components/profile/profile';
+import Posts from './components/posts/posts';
 import Login from './components/auth/login';
 import Register from './components/auth/register';
 import PrivateRouter from './components/routing/privateroute';
@@ -73,6 +74,11 @@ const App = () => {
 								exact
 								path='/add-education'
 								component={AddEducation}
+							/>
+							<PrivateRouter
+								exact
+								path='/posts'
+								component={Posts}
 							/>
 						</Switch>
 					</section>
