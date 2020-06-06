@@ -11,6 +11,7 @@ import AddEducation from './components/profile-form/add.education';
 import Profiles from './components/profiles/profiles';
 import Profile from './components/profile/profile';
 import Posts from './components/posts/posts';
+import Post from './components/post/post';
 import Login from './components/auth/login';
 import Register from './components/auth/register';
 import PrivateRouter from './components/routing/privateroute';
@@ -79,6 +80,11 @@ const App = () => {
 								exact
 								path='/posts'
 								component={Posts}
+							/>
+							<PrivateRouter
+								exact
+								path='/posts/:id'
+								component={Post}
 							/>
 						</Switch>
 					</section>
