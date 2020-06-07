@@ -15,7 +15,7 @@ const Profile = ({ getProfileById, match, profile: { profile }, auth }) => {
 		getProfileById(match.params.id);
 	}, [getProfileById, match.params.id]);
 	return (
-		<Fragment>
+		<section className='container'>
 			{profile === null ? (
 				<Spinner />
 			) : (
@@ -69,7 +69,7 @@ const Profile = ({ getProfileById, match, profile: { profile }, auth }) => {
 					</div>
 				</Fragment>
 			)}
-		</Fragment>
+		</section>
 	);
 };
 

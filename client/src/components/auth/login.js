@@ -7,12 +7,13 @@ import { login } from '../../actions/auth';
 const Login = ({ login, isAuthenticated }) => {
 	const [formData, setFormData] = useState({
 		email: '',
-		password: ''
+		password: '',
 	});
 
 	const { email, password } = formData;
 
-	const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+	const onChange = e =>
+		setFormData({ ...formData, [e.target.name]: e.target.value });
 
 	const onSubmit = async e => {
 		e.preventDefault();
@@ -21,13 +22,15 @@ const Login = ({ login, isAuthenticated }) => {
 
 	// Redirect if logged in
 	if (isAuthenticated) {
-		return <Redirect to='/dashboard' />
+		return <Redirect to='/dashboard' />;
 	}
 
 	return (
-		<Fragment>
+		<section className='container'>
 			<h1 className='large text-primary'>Sign In</h1>
-			<p className='lead'><i className='fas fa-user'></i>Sign Into Your Account</p>
+			<p className='lead'>
+				<i className='fas fa-user'></i> Sign Into Your Account
+			</p>
 			<form onSubmit={e => onSubmit(e)} className='form'>
 				<div className='form-group'>
 					<input
@@ -48,22 +51,26 @@ const Login = ({ login, isAuthenticated }) => {
 						onChange={e => onChange(e)}
 					/>
 				</div>
-				<input type='submit' className='btn btn-primary' value='Login' />
+				<input
+					type='submit'
+					className='btn btn-primary'
+					value='Login'
+				/>
 			</form>
 			<p className='my-1'>
 				Don't have an account? <Link to='/register'>Register Now</Link>
 			</p>
-		</Fragment>
+		</section>
 	);
 };
 
 Login.propTypes = {
 	login: PropTypes.func.isRequired,
-	isAuthenticated: PropTypes.bool
+	isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.auth.isAuthenticated
-})
+	isAuthenticated: state.auth.isAuthenticated,
+});
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, { login })(Login);

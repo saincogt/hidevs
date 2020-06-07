@@ -25,7 +25,7 @@ const ProfileAbout = ({
 				{skills.map((skill, idx) => (
 					<div className='p-1' key={idx}>
 						<i className='fa fa-check'></i>
-						{skill}
+						{` ${skill}`}
 					</div>
 				))}
 			</div>

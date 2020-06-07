@@ -10,31 +10,34 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 		name: '',
 		email: '',
 		password: '',
-		password2: ''
+		password2: '',
 	});
 
 	const { name, email, password, password2 } = formData;
 
-	const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+	const onChange = e =>
+		setFormData({ ...formData, [e.target.name]: e.target.value });
 
 	const onSubmit = async e => {
 		e.preventDefault();
 		if (password !== password2) {
 			console.log('Passwords do not match');
-			setAlert('Passwords do not match', 'danger')
+			setAlert('Passwords do not match', 'danger');
 		} else {
 			register({ name, email, password });
 		}
-	}
+	};
 
 	if (isAuthenticated) {
-		return <Redirect to='/dashboard' />
+		return <Redirect to='/dashboard' />;
 	}
 
 	return (
-		<Fragment>
+		<section className='container'>
 			<h1 className='large text-primary'>Sign Up</h1>
-			<p className='lead'><i className='fas fa-user'></i>Create Your Account</p>
+			<p className='lead'>
+				<i className='fas fa-user'></i> Create Your Account
+			</p>
 			<form onSubmit={e => onSubmit(e)} className='form'>
 				<div className='form-group'>
 					<input
@@ -54,7 +57,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 						onChange={e => onChange(e)}
 					/>
 					<small className='form-text'>
-						This site users Gravatar so if you want a profile image, use a Gravatar email.
+						This site users Gravatar so if you want a profile image,
+						use a Gravatar email.
 					</small>
 				</div>
 				<div className='form-group'>
@@ -77,23 +81,27 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 						onChange={e => onChange(e)}
 					/>
 				</div>
-				<input type='submit' className='btn btn-primary' value='Register' />
+				<input
+					type='submit'
+					className='btn btn-primary'
+					value='Register'
+				/>
 			</form>
 			<p className='my-1'>
 				Already have an account? <Link to='/login'>Sign In</Link>
 			</p>
-		</Fragment>
+		</section>
 	);
 };
 
 Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
 	register: PropTypes.func.isRequired,
-	isAuthenticated: PropTypes.bool
-}
+	isAuthenticated: PropTypes.bool,
+};
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.auth.isAuthenticated
-})
+	isAuthenticated: state.auth.isAuthenticated,
+});
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

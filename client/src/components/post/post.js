@@ -15,7 +15,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
 	return loading || post === null ? (
 		<Spinner />
 	) : (
-		<Fragment>
+		<section className='container'>
 			<Link to='/posts' className='btn'>
 				Back to Posts
 			</Link>
@@ -30,7 +30,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
 					/>
 				))}
 			</div>
-		</Fragment>
+		</section>
 	);
 };
 
