@@ -59,7 +59,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 			<h1>
 				<Link to='/' className='logo-container'>
 					<img src={Logo} alt='logo' className='logo' />
-					DevConnector
+					HiDevs
 				</Link>
 			</h1>
 			{!loading && (
