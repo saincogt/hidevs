@@ -5,17 +5,18 @@ import { connect } from 'react-redux';
 const Alert = ({ alerts }) => {
 	return (
 		alerts !== null &&
-		alerts.length > 0 &&
-		alerts.map(alert => (
+		alerts.length > 0 && (
 			<section className='container'>
-				<div
-					key={alert.id}
-					className={`alert alert-${alert.alertType}`}
-				>
-					{alert.msg}
-				</div>
+				{alerts.map(alert => (
+					<div
+						key={alert.id}
+						className={`alert alert-${alert.alertType}`}
+					>
+						{alert.msg}
+					</div>
+				))}
 			</section>
-		))
+		)
 	);
 };
 
